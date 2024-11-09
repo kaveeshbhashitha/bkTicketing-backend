@@ -19,12 +19,9 @@ public class GeneralEventServiceImplementation implements GeneralEventService {
      */
     public List<GeneralEvent> getAllEvents() {
         List<GeneralEvent> events = eventRepository.findAll();
-
-        // Loop through each event and prepend the server URL to the image path
         for (GeneralEvent event : events) {
             String imagePath = event.getEventImagePath();
-
-            // Check if the image path is not null or empty and prepend the server URL
+            
             if (imagePath != null && !imagePath.isEmpty()) {
                 event.setEventImagePath("http://localhost:8080" + imagePath);
             }
