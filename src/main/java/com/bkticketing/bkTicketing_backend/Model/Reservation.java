@@ -13,6 +13,7 @@ public class Reservation {
     private String eventId;
     private Integer numOfTickets;
     private Double perTicketCharge;
+    private Double totalCharge;
     private String status = "Available";
     private LocalDate reservationDate = LocalDate.now();
     private LocalTime reservationTime = LocalTime.now();
@@ -79,5 +80,13 @@ public class Reservation {
 
     public void setReservationTime(LocalTime reservationTime) {
         this.reservationTime = reservationTime;
+    }
+
+    public Double getTotalCharge() {
+        return totalCharge;
+    }
+
+    public void setTotalCharge(Double totalCharge) {
+        this.totalCharge = totalCharge;
     }
 }

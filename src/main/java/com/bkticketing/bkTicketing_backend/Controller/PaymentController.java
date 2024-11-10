@@ -1,7 +1,8 @@
 package com.bkticketing.bkTicketing_backend.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.bkticketing.bkTicketing_backend.Model.Payment;
+import com.bkticketing.bkTicketing_backend.Service.PaymentService;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
