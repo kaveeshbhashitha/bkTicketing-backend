@@ -12,6 +12,7 @@ public class Reservation {
     private String userId;
     private String eventId;
     private Integer numOfTickets;
+    private Double totalCharge;
     private Double perTicketCharge;
     private Double totalCharge;
     private String status = "Available";
@@ -81,6 +82,7 @@ public class Reservation {
     public void setReservationTime(LocalTime reservationTime) {
         this.reservationTime = reservationTime;
     }
+<<<<<<< HEAD
 
     public Double getTotalCharge() {
         return totalCharge;
@@ -89,4 +91,14 @@ public class Reservation {
     public void setTotalCharge(Double totalCharge) {
         this.totalCharge = totalCharge;
     }
+=======
+    public Double gettotalCharge() {
+        return totalCharge;
+    }
+
+    public void settotalCharge(Double total) {
+        this.totalCharge = total;
+    }
+
+>>>>>>> 8d7e22cc2d3bb23f1605dca04da2aa92ab5855f0
 }
