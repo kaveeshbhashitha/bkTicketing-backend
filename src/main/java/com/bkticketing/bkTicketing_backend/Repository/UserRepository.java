@@ -9,5 +9,5 @@ public interface UserRepository extends MongoRepository<User, String> {
     Optional<User> findByUserId(String userId);
     User findByUserEmail(String username);
      @Query("SELECT u.username FROM User u WHERE u.id = :userId")
-    String findUsernameByUserId(Long userId);
+     Optional<User> findUsernameByUserId(String userId);
 }
