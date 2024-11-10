@@ -28,7 +28,7 @@ public class UserServiceImplementation implements UserService {
     public User getUserByUserEmail(String userEmail) {
         return userRepository.findByUserEmail(userEmail);
     }
-
+    
     // Get all users
     public List<User> getAllUsers() {
         return userRepository.findAll();
