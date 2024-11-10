@@ -37,6 +37,7 @@ public class ReservationServiceImplementation implements ReservationService {
             reservation.setNumOfTickets(reservationDetail.getNumOfTickets());
             reservation.setPerTicketCharge(reservationDetail.getPerTicketCharge());
             reservation.setStatus(reservationDetail.getStatus());
+            reservation.settotalCharge(reservationDetail.gettotalCharge());
             return reservationRepository.save(reservation);
         }).orElseThrow(() -> new RuntimeException("Reservation not found with id " + reservationId));
     }
