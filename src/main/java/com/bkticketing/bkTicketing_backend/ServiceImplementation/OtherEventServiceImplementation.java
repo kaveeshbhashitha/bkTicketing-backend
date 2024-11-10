@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.bkticketing.bkTicketing_backend.Model.OtherEvent;
 import com.bkticketing.bkTicketing_backend.Repository.OtherEventRepository;
 import com.bkticketing.bkTicketing_backend.Service.OtherEventService;
 
+@Service
 public class OtherEventServiceImplementation implements OtherEventService {
     @Autowired
     private OtherEventRepository otherEventRepository;
