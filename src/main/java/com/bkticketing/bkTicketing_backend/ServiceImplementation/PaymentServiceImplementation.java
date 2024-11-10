@@ -1,9 +1,11 @@
 package com.bkticketing.bkTicketing_backend.ServiceImplementation;
 import com.bkticketing.bkTicketing_backend.Model.Email;
+import com.bkticketing.bkTicketing_backend.Model.GeneralEvent;
 import com.bkticketing.bkTicketing_backend.Model.Payment;
 import com.bkticketing.bkTicketing_backend.Model.Reservation;
 import com.bkticketing.bkTicketing_backend.Model.User;
 import com.bkticketing.bkTicketing_backend.Repository.EmailRepository;
+import com.bkticketing.bkTicketing_backend.Repository.GeneralEventRepository;
 import com.bkticketing.bkTicketing_backend.Repository.PaymentRepository;
 import com.bkticketing.bkTicketing_backend.Repository.ReservationRepository;
 import com.bkticketing.bkTicketing_backend.Repository.UserRepository;
@@ -26,6 +28,8 @@ public class PaymentServiceImplementation implements PaymentService {
     private EmailRepository emailRepository;
     @Autowired
     private ReservationRepository reservationRepository;
+    @Autowired
+    private GeneralEventRepository generalEventRepository;
     @Autowired
     private JavaMailSender mailSender;
 
@@ -65,6 +69,8 @@ public class PaymentServiceImplementation implements PaymentService {
         if (userOptional.isPresent() && reservationOptional.isPresent()) {
             User user = userOptional.get();
             Reservation reservation = reservationOptional.get();
+            Optional<GeneralEvent> eventOptional = generalEventRepository.findById(reservation.getEventId());
+            GeneralEvent generalEvent = eventOptional.get();
 
             try {
                 MimeMessage mimeMessage = mailSender.createMimeMessage();
@@ -94,9 +100,14 @@ public class PaymentServiceImplementation implements PaymentService {
 
                         "<table class='table'>" +
                         "<tr><td><strong>Email Address:</strong></td><td>" + user.getUserEmail() + "</td></tr>" +
+                        "<tr><td><strong>Event Name:</strong></td><td>" + generalEvent.getEventName() + "</td></tr>" +
                         "<tr><td><strong>Reservation Date:</strong></td><td>" + user.getDateRegistered() + "</td></tr>" +
                         "<tr><td><strong>Reservation Time:</strong></td><td>" + user.getTimeRegistered() + "</td></tr>" +
-                        "<tr><td><strong>Amount Paid:</strong></td><td class='amount'>$" + payment.getAmount() + "</td></tr>" +
+                        "<tr><td><strong>Event Date:</strong></td><td>" + generalEvent.getEventDate() + "</td></tr>" +
+                        "<tr><td><strong>Event Time:</strong></td><td>" + generalEvent.getEventTime() + "</td></tr>" +
+                        "<tr><td><strong>Event Venue:</strong></td><td class='amount'>" + generalEvent.getEventVenue() + "</td></tr>" +
+                        "<tr><td><strong>Number of Tickets:</strong></td><td>" + reservation.getNumOfTickets() + "</td></tr>" +
+                        "<tr><td><strong>Amount Paid:</strong></td><td class='amount'>Rs" + payment.getAmount() + ".0</td></tr>" +
                         "<tr><td><strong>Transaction Description:</strong></td><td>" + payment.getDescription() + "</td></tr>" +
                         "</table>" +
 

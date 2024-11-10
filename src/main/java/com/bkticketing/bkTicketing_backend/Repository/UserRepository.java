@@ -1,9 +1,13 @@
 package com.bkticketing.bkTicketing_backend.Repository;
 import com.bkticketing.bkTicketing_backend.Model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+
 import java.util.Optional;
 
 public interface UserRepository extends MongoRepository<User, String> {
     Optional<User> findByUserId(String userId);
     User findByUserEmail(String username);
+     @Query("SELECT u.username FROM User u WHERE u.id = :userId")
+    String findUsernameByUserId(Long userId);
 }

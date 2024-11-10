@@ -32,6 +32,11 @@ public class UserController {
         User user = userService.getUserById(userId);
         return ResponseEntity.ok(user);
     }
+    @GetMapping("/getUserNameByID/{id}")
+    public String getUsernameById(@PathVariable("id") Long userId) {
+        // Call the custom query method to fetch the username by userId
+        return userRepository.findUsernameByUserId(userId);
+    }
 
     @GetMapping("/getUserByEmail/{id}")
     public User getUserByEmail(@PathVariable("id") String userEmail) {
