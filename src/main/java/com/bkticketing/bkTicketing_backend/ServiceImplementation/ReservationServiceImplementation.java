@@ -1,14 +1,13 @@
 package com.bkticketing.bkTicketing_backend.ServiceImplementation;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.bkticketing.bkTicketing_backend.Model.Reservation;
 import com.bkticketing.bkTicketing_backend.Repository.ReservationRepository;
 import com.bkticketing.bkTicketing_backend.Service.ReservationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservationServiceImplementation implements ReservationService {
@@ -42,7 +41,6 @@ public class ReservationServiceImplementation implements ReservationService {
             reservation.setPerTicketCharge(reservationDetail.getPerTicketCharge());
             reservation.setTotalCharge(reservationDetail.getTotalCharge());
             reservation.setStatus(reservationDetail.getStatus());
-            reservation.settotalCharge(reservationDetail.gettotalCharge());
             return reservationRepository.save(reservation);
         }).orElseThrow(() -> new RuntimeException("Reservation not found with id " + reservationId));
     }

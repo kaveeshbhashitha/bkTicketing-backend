@@ -1,25 +1,13 @@
 package com.bkticketing.bkTicketing_backend.Controller;
 
-import java.util.List;
-import java.util.Optional;
-
+import com.bkticketing.bkTicketing_backend.Model.Reservation;
+import com.bkticketing.bkTicketing_backend.Service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.bkticketing.bkTicketing_backend.Model.Reservation;
-import com.bkticketing.bkTicketing_backend.Service.ReservationService;
+import java.util.List;
+import java.util.Optional;
 
-<<<<<<< HEAD
-=======
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PutMapping;
-
->>>>>>> 8d7e22cc2d3bb23f1605dca04da2aa92ab5855f0
 @RestController
 @CrossOrigin("http://localhost:3000")
 @RequestMapping("/reservation")
