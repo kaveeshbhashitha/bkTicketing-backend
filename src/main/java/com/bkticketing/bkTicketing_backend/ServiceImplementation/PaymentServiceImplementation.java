@@ -1,14 +1,4 @@
 package com.bkticketing.bkTicketing_backend.ServiceImplementation;
-import com.bkticketing.bkTicketing_backend.Model.Email;
-import com.bkticketing.bkTicketing_backend.Model.GeneralEvent;
-import com.bkticketing.bkTicketing_backend.Model.Payment;
-import com.bkticketing.bkTicketing_backend.Model.Reservation;
-import com.bkticketing.bkTicketing_backend.Model.User;
-import com.bkticketing.bkTicketing_backend.Repository.EmailRepository;
-import com.bkticketing.bkTicketing_backend.Repository.GeneralEventRepository;
-import com.bkticketing.bkTicketing_backend.Repository.PaymentRepository;
-import com.bkticketing.bkTicketing_backend.Repository.ReservationRepository;
-import com.bkticketing.bkTicketing_backend.Repository.UserRepository;
 import com.bkticketing.bkTicketing_backend.Service.PaymentService;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +16,8 @@ public class PaymentServiceImplementation implements PaymentService {
     private UserRepository userRepository;
     @Autowired
     private EmailRepository emailRepository;
+    @Autowired
+    private GeneralEventRepository generalEventRepository;
     @Autowired
     private ReservationRepository reservationRepository;
     @Autowired

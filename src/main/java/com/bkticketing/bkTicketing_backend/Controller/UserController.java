@@ -79,4 +79,12 @@ public class UserController {
         session.invalidate();
         return "Logged out successfully";
     }
+    @PostMapping("/register")
+    public String register(@RequestBody User user) {
+        if (userRepository.findByUserEmail(user.getUserEmail()) != null) {
+            return "User already registered as a user";
+        }
+        userRepository.save(user);
+        return "User registered successfully";
+    }
 }

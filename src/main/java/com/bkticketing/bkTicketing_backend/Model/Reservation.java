@@ -14,6 +14,7 @@ public class Reservation {
     private Integer numOfTickets;
     private Double totalCharge;
     private Double perTicketCharge;
+    private Double totalCharge;
     private String status = "Available";
     private LocalDate reservationDate = LocalDate.now();
     private LocalTime reservationTime = LocalTime.now();
@@ -81,6 +82,16 @@ public class Reservation {
     public void setReservationTime(LocalTime reservationTime) {
         this.reservationTime = reservationTime;
     }
+<<<<<<< HEAD
+
+    public Double getTotalCharge() {
+        return totalCharge;
+    }
+
+    public void setTotalCharge(Double totalCharge) {
+        this.totalCharge = totalCharge;
+    }
+=======
     public Double gettotalCharge() {
         return totalCharge;
     }
@@ -89,4 +100,5 @@ public class Reservation {
         this.totalCharge = total;
     }
 
+>>>>>>> 8d7e22cc2d3bb23f1605dca04da2aa92ab5855f0
 }
