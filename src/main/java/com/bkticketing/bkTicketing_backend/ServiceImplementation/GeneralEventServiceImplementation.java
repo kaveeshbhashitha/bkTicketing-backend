@@ -34,6 +34,10 @@ public class GeneralEventServiceImplementation implements GeneralEventService {
         return eventRepository.findById(eventId);
     }
 
+    public List<GeneralEvent> getEventByType(String eventType) {
+        return eventRepository.findByType(eventType);
+    }
+
     public GeneralEvent addEvent(GeneralEvent event) {
         return eventRepository.save(event);
     }
