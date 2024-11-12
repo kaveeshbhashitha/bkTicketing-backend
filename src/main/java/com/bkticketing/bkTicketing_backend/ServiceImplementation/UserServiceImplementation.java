@@ -11,30 +11,32 @@ public class UserServiceImplementation implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-    // Create a new user
+    @Override
     public User createUser(User user) {
         return userRepository.save(user);
     }
 
-    // Get user by ID
+    @Override
     public User getUserById(String userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found with ID: " + userId));
     }
+    @Override
     public User getUserNameById(String userId) {
         return userRepository.findUsernameByUserId(userId)
                 .orElseThrow(() -> new RuntimeException("User not found with ID: " + userId));
     }
+    @Override
     public User getUserByUserEmail(String userEmail) {
         return userRepository.findByUserEmail(userEmail);
     }
-    
-    // Get all users
+
+    @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    // Update user by ID
+    @Override
     public User updateUser(String userId, User userDetails) {
         return userRepository.findById(userId).map(user -> {
             user.setUserEmail(userDetails.getUserEmail());
@@ -46,7 +48,7 @@ public class UserServiceImplementation implements UserService {
         }).orElseThrow(() -> new RuntimeException("User not found with ID: " + userId));
     }
 
-    // Delete user by ID
+    @Override
     public void deleteUser(String userId) {
         userRepository.deleteById(userId);
     }
