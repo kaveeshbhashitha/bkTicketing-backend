@@ -14,23 +14,23 @@ public class ReservationServiceImplementation implements ReservationService {
 
     @Autowired
     private ReservationRepository reservationRepository;
-
+    @Override
     public List<Reservation> getAllReservations() {
         return reservationRepository.findAll();
     }
-
+    @Override
     public List<Reservation> getReservationByUserId(String userId){
         return reservationRepository.findReservationByUserId(userId);
     };
-
+    @Override
     public Optional<Reservation> getReservationById(String reservationId) {
         return reservationRepository.findById(reservationId);
     }
-
+    @Override
     public Reservation addReservation(Reservation reservation) {
         return reservationRepository.save(reservation);
     }
-
+    @Override
     public Reservation updateReservation(String reservationId, Reservation reservationDetail) {
         return reservationRepository.findById(reservationId).map(reservation -> {
             reservation.setEventId(reservationDetail.getEventId());
@@ -44,7 +44,7 @@ public class ReservationServiceImplementation implements ReservationService {
             return reservationRepository.save(reservation);
         }).orElseThrow(() -> new RuntimeException("Reservation not found with id " + reservationId));
     }
-
+    @Override
     public void deleteReservation(String reservationId) {
         reservationRepository.deleteById(reservationId);
     }
