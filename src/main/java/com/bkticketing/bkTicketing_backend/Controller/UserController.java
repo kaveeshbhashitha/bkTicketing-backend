@@ -32,6 +32,12 @@ public class UserController {
         User user = userService.getUserById(userId);
         return ResponseEntity.ok(user);
     }
+    @GetMapping("/getUserNameByID/{id}")
+    public String getUsernameById(@PathVariable("id") String userId) {
+        User user = userService.getUserNameById(userId);
+        String userName=user.getFirstName();
+        return userName;
+    }
 
     @GetMapping("/getUserByEmail/{id}")
     public User getUserByEmail(@PathVariable("id") String userEmail) {
@@ -72,5 +78,13 @@ public class UserController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "Logged out successfully";
+    }
+    @PostMapping("/register")
+    public String register(@RequestBody User user) {
+        if (userRepository.findByUserEmail(user.getUserEmail()) != null) {
+            return "User already registered as a user";
+        }
+        userRepository.save(user);
+        return "User registered successfully";
     }
 }

@@ -17,6 +17,10 @@ public class ReservationServiceImplementation implements ReservationService {
         return reservationRepository.findAll();
     }
 
+    public List<Reservation> getReservationByUserId(String userId){
+        return reservationRepository.findReservationByUserId(userId);
+    };
+
     public Optional<Reservation> getReservationById(String reservationId) {
         return reservationRepository.findById(reservationId);
     }
@@ -33,6 +37,7 @@ public class ReservationServiceImplementation implements ReservationService {
             reservation.setReservationTime(reservationDetail.getReservationTime());
             reservation.setNumOfTickets(reservationDetail.getNumOfTickets());
             reservation.setPerTicketCharge(reservationDetail.getPerTicketCharge());
+            reservation.setTotalCharge(reservationDetail.getTotalCharge());
             reservation.setStatus(reservationDetail.getStatus());
             return reservationRepository.save(reservation);
         }).orElseThrow(() -> new RuntimeException("Reservation not found with id " + reservationId));
