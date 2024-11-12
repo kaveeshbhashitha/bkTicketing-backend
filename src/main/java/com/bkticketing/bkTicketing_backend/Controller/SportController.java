@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
-@RequestMapping("/match")
+@RequestMapping("/sport")
 public class SportController {
     @Autowired
     private SportServiceImplementation sportServiceImplementation;
@@ -25,17 +25,17 @@ public class SportController {
         return sportServiceImplementation.getSportById(eventId);
     }
 
-    @PostMapping("/addMatch")
+    @PostMapping("/addSport")
     public Sport addMatch(@RequestBody Sport sport) {
         return sportServiceImplementation.addSport(sport);
     }
 
-    @PutMapping("/updateMatch/{id}")
+    @PutMapping("/updateSport/{id}")
     public Sport updateSport(@PathVariable("id") String eventId, @RequestBody Sport sport) {
         return sportServiceImplementation.updateSport(eventId, sport);
     }
 
-    @DeleteMapping("/deleteMatch/{id}")
+    @DeleteMapping("/deleteSport/{id}")
     public String deleteSport(@PathVariable("id") String matchId) {
         sportServiceImplementation.deleteSport(matchId);
         return "Sport deleted with id " + matchId;
