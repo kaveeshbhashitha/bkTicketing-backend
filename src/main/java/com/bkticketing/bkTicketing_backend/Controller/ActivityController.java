@@ -1,10 +1,8 @@
 package com.bkticketing.bkTicketing_backend.Controller;
-
 import com.bkticketing.bkTicketing_backend.Model.Activity;
 import com.bkticketing.bkTicketing_backend.Service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
