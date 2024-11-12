@@ -34,15 +34,20 @@ public class GeneralEventServiceImplementation implements GeneralEventService {
     public Optional<GeneralEvent> getEventById(String eventId) {
         return eventRepository.findById(eventId);
     }
-<<<<<<< HEAD
 
     public List<GeneralEvent> getEventByType(String eventType) {
-        return eventRepository.findByType(eventType);
+        List<GeneralEvent> events = eventRepository.findByType(eventType);
+        for (GeneralEvent event : events) {
+            String imagePath = event.getEventImagePath();
+
+            if (imagePath != null && !imagePath.isEmpty()) {
+                event.setEventImagePath("http://localhost:8080" + imagePath);
+            }
+        }
+        return events;
     }
 
-=======
     @Override
->>>>>>> fff34fbde281d929264dd9bece74215810bf35ba
     public GeneralEvent addEvent(GeneralEvent event) {
         return eventRepository.save(event);
     }
