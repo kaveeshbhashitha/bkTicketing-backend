@@ -5,6 +5,8 @@ import com.bkticketing.bkTicketing_backend.Service.SportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,12 +21,34 @@ public class SportServiceImplementation implements SportService {
             String imagePath = event.getMatchImagePath();
             
             if (imagePath != null && !imagePath.isEmpty()) {
-                event.setMatchImagePath("http://localhost:8080" + imagePath);
+                String fullPath = getAccessibleUrl("http://192.168.50.90:8080" + imagePath,
+                                               "http://192.168.50.91:8080" + imagePath);
+                event.setMatchImagePath(fullPath);
             }
         }
 
         return events;
     }
+
+    private String getAccessibleUrl(String... urls) {
+        for (String url : urls) {
+            if (isUrlAccessible(url)) {
+                return url;
+            }
+        }
+        return null; // or handle it if neither URL is accessible
+    }
+    private boolean isUrlAccessible(String urlString) {
+    try {
+        URL url = new URL(urlString);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("HEAD");
+        int responseCode = connection.getResponseCode();
+        return (responseCode == HttpURLConnection.HTTP_OK);
+    } catch (Exception e) {
+        return false;
+    }
+}
 
     @Override
     public Optional<Sport> getSportById(String eventId) {

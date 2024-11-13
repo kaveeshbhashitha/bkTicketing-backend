@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = {"http://192.168.50.90:3000", "http://localhost:3000"})
 @RequestMapping("/sport")
 public class SportController {
     @Autowired
