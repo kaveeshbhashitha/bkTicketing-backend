@@ -14,7 +14,16 @@ public class SportServiceImplementation implements SportService {
     private SportRepository sportRepository;
     @Override
     public List<Sport> getAllSport() {
-        return sportRepository.findAll();
+       List<Sport> events = sportRepository.findAll();
+        for (Sport event : events) {
+            String imagePath = event.getMatchImagePath();
+            
+            if (imagePath != null && !imagePath.isEmpty()) {
+                event.setMatchImagePath("http://localhost:8080" + imagePath);
+            }
+        }
+
+        return events;
     }
 
     @Override
