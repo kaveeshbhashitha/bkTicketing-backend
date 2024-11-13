@@ -1,10 +1,14 @@
 package com.bkticketing.bkTicketing_backend.ServiceImplementation;
+
+import com.bkticketing.bkTicketing_backend.Model.*;
+import com.bkticketing.bkTicketing_backend.Repository.*;
 import com.bkticketing.bkTicketing_backend.Service.PaymentService;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +24,6 @@ public class PaymentServiceImplementation implements PaymentService {
     private GeneralEventRepository generalEventRepository;
     @Autowired
     private ReservationRepository reservationRepository;
-    @Autowired
-    private GeneralEventRepository generalEventRepository;
     @Autowired
     private JavaMailSender mailSender;
 

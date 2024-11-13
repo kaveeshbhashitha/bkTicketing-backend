@@ -17,6 +17,7 @@ public class GeneralEventServiceImplementation implements GeneralEventService {
         return eventRepository.findAll();
     }
      */
+    @Override
     public List<GeneralEvent> getAllEvents() {
         List<GeneralEvent> events = eventRepository.findAll();
         for (GeneralEvent event : events) {
@@ -29,15 +30,28 @@ public class GeneralEventServiceImplementation implements GeneralEventService {
 
         return events;
     }
-
+    @Override
     public Optional<GeneralEvent> getEventById(String eventId) {
         return eventRepository.findById(eventId);
     }
 
+    public List<GeneralEvent> getEventByType(String eventType) {
+        List<GeneralEvent> events = eventRepository.findByType(eventType);
+        for (GeneralEvent event : events) {
+            String imagePath = event.getEventImagePath();
+
+            if (imagePath != null && !imagePath.isEmpty()) {
+                event.setEventImagePath("http://localhost:8080" + imagePath);
+            }
+        }
+        return events;
+    }
+
+    @Override
     public GeneralEvent addEvent(GeneralEvent event) {
         return eventRepository.save(event);
     }
-
+    @Override
     public GeneralEvent updateEvent(String eventId, GeneralEvent eventDetails) {
         return eventRepository.findById(eventId).map(event -> {
             event.setEventName(eventDetails.getEventName());
@@ -53,7 +67,7 @@ public class GeneralEventServiceImplementation implements GeneralEventService {
             return eventRepository.save(event);
         }).orElseThrow(() -> new RuntimeException("Event not found with id " + eventId));
     }
-
+    @Override
     public void deleteEvent(String eventId) {
         eventRepository.deleteById(eventId);
     }
