@@ -71,7 +71,6 @@ public class TheaterServiceImplementation implements TheaterService {
             theater.setTheaterOrganizer(theaterDetails.getTheaterOrganizer());
             theater.setDescription(theaterDetails.getDescription());
             theater.setOneTicketPrice(theaterDetails.getOneTicketPrice());
-            theater.setTheaterImagePath(theaterDetails.getTheaterImagePath());
             theater.setTheaterIsFor(theaterDetails.getTheaterIsFor());
             theater.setNumOfTickets(theaterDetails.getNumOfTickets());
             return theaterRepository.save(theater);
