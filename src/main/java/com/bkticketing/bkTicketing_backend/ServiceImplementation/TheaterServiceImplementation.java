@@ -4,7 +4,6 @@ import com.bkticketing.bkTicketing_backend.Repository.TheaterRepository;
 import com.bkticketing.bkTicketing_backend.Service.TheaterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
@@ -16,17 +15,17 @@ public class TheaterServiceImplementation implements TheaterService {
     private TheaterRepository theaterRepository;
     @Override
     public List<Theater> getAllTheater() {
-        List<Theater> events = theaterRepository.findAll();
-        for (Theater event : events) {
-            String imagePath = event.getTheaterImagePath();
-            
+        List<Theater> theater = theaterRepository.findAll();
+        for (Theater theater1 : theater) {
+            String imagePath = theater1.getTheaterImagePath();
+
             if (imagePath != null && !imagePath.isEmpty()) {
+                theater1.setTheaterImagePath("http://localhost:8080" + imagePath);
                 String fullPath = getAccessibleUrl("http://localhost:8080" + imagePath);
                 event.setTheaterImagePath(fullPath);
             }
         }
-
-        return events;
+        return theater;
     }
 
      private String getAccessibleUrl(String... urls) {
@@ -35,19 +34,20 @@ public class TheaterServiceImplementation implements TheaterService {
                 return url;
             }
         }
-        return null; // or handle it if neither URL is accessible
+        return null; 
     }
+
     private boolean isUrlAccessible(String urlString) {
-    try {
-        URL url = new URL(urlString);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("HEAD");
-        int responseCode = connection.getResponseCode();
-        return (responseCode == HttpURLConnection.HTTP_OK);
-    } catch (Exception e) {
-        return false;
+        try {
+            URL url = new URL(urlString);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("HEAD");
+            int responseCode = connection.getResponseCode();
+            return (responseCode == HttpURLConnection.HTTP_OK);
+        } catch (Exception e) {
+            return false;
+        }
     }
-}
 
     @Override
     public Optional<Theater> getTheaterById(String theaterId) {

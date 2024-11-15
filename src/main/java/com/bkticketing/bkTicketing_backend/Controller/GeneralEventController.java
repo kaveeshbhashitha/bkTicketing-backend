@@ -39,8 +39,6 @@ public class GeneralEventController {
         return eventService.getEventByType(eventType);
     }
 
-
-
     @PostMapping("/addEvent")
     public GeneralEvent addEvent(@RequestBody GeneralEvent event) {
         return eventService.addEvent(event);

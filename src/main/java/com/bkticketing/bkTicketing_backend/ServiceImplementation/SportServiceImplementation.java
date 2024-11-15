@@ -4,7 +4,6 @@ import com.bkticketing.bkTicketing_backend.Repository.SportRepository;
 import com.bkticketing.bkTicketing_backend.Service.SportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
@@ -16,17 +15,17 @@ public class SportServiceImplementation implements SportService {
     private SportRepository sportRepository;
     @Override
     public List<Sport> getAllSport() {
-       List<Sport> events = sportRepository.findAll();
-        for (Sport event : events) {
-            String imagePath = event.getMatchImagePath();
-            
+        List<Sport> sport = sportRepository.findAll();
+        for (Sport sports : sport) {
+            String imagePath = sports.getMatchImagePath();
+
             if (imagePath != null && !imagePath.isEmpty()) {
+                sports.setMatchImagePath("http://localhost:8080" + imagePath);
                 String fullPath = getAccessibleUrl("http://localhost:8080" + imagePath);
                 event.setMatchImagePath(fullPath);
             }
         }
-
-        return events;
+        return sport;
     }
 
     private String getAccessibleUrl(String... urls) {
@@ -35,19 +34,20 @@ public class SportServiceImplementation implements SportService {
                 return url;
             }
         }
-        return null; // or handle it if neither URL is accessible
+        return null; 
     }
+
     private boolean isUrlAccessible(String urlString) {
-    try {
-        URL url = new URL(urlString);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("HEAD");
-        int responseCode = connection.getResponseCode();
-        return (responseCode == HttpURLConnection.HTTP_OK);
-    } catch (Exception e) {
-        return false;
+        try {
+            URL url = new URL(urlString);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("HEAD");
+            int responseCode = connection.getResponseCode();
+            return (responseCode == HttpURLConnection.HTTP_OK);
+        } catch (Exception e) {
+            return false;
+        }
     }
-}
 
     @Override
     public Optional<Sport> getSportById(String eventId) {
