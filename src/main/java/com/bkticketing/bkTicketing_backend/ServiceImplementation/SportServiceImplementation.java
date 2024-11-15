@@ -1,11 +1,11 @@
 package com.bkticketing.bkTicketing_backend.ServiceImplementation;
-
 import com.bkticketing.bkTicketing_backend.Model.Sport;
 import com.bkticketing.bkTicketing_backend.Repository.SportRepository;
 import com.bkticketing.bkTicketing_backend.Service.SportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +24,27 @@ public class SportServiceImplementation implements SportService {
             }
         }
         return sport;
+    }
+
+    private String getAccessibleUrl(String... urls) {
+        for (String url : urls) {
+            if (isUrlAccessible(url)) {
+                return url;
+            }
+        }
+        return null; 
+    }
+
+    private boolean isUrlAccessible(String urlString) {
+        try {
+            URL url = new URL(urlString);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("HEAD");
+            int responseCode = connection.getResponseCode();
+            return (responseCode == HttpURLConnection.HTTP_OK);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
