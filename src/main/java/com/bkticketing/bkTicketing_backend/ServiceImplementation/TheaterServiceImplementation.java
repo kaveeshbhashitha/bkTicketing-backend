@@ -21,8 +21,7 @@ public class TheaterServiceImplementation implements TheaterService {
             String imagePath = event.getTheaterImagePath();
             
             if (imagePath != null && !imagePath.isEmpty()) {
-                String fullPath = getAccessibleUrl("http://192.168.50.90:8080" + imagePath,
-                "http://192.168.50.91:8080" + imagePath);
+                String fullPath = getAccessibleUrl("\"http://localhost:8080" + imagePath);
                 event.setTheaterImagePath(fullPath);
             }
         }
