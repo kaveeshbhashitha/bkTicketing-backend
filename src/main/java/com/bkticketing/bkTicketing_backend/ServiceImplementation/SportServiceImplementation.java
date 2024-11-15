@@ -1,4 +1,5 @@
 package com.bkticketing.bkTicketing_backend.ServiceImplementation;
+
 import com.bkticketing.bkTicketing_backend.Model.Sport;
 import com.bkticketing.bkTicketing_backend.Repository.SportRepository;
 import com.bkticketing.bkTicketing_backend.Service.SportService;
@@ -14,7 +15,15 @@ public class SportServiceImplementation implements SportService {
     private SportRepository sportRepository;
     @Override
     public List<Sport> getAllSport() {
-        return sportRepository.findAll();
+        List<Sport> sport = sportRepository.findAll();
+        for (Sport sports : sport) {
+            String imagePath = sports.getMatchImagePath();
+
+            if (imagePath != null && !imagePath.isEmpty()) {
+                sports.setMatchImagePath("http://localhost:8080" + imagePath);
+            }
+        }
+        return sport;
     }
 
     @Override

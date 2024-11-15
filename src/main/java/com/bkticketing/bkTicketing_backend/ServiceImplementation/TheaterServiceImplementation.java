@@ -1,9 +1,11 @@
 package com.bkticketing.bkTicketing_backend.ServiceImplementation;
+
 import com.bkticketing.bkTicketing_backend.Model.Theater;
 import com.bkticketing.bkTicketing_backend.Repository.TheaterRepository;
 import com.bkticketing.bkTicketing_backend.Service.TheaterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +15,15 @@ public class TheaterServiceImplementation implements TheaterService {
     private TheaterRepository theaterRepository;
     @Override
     public List<Theater> getAllTheater() {
-        return theaterRepository.findAll();
+        List<Theater> theater = theaterRepository.findAll();
+        for (Theater theater1 : theater) {
+            String imagePath = theater1.getTheaterImagePath();
+
+            if (imagePath != null && !imagePath.isEmpty()) {
+                theater1.setTheaterImagePath("http://localhost:8080" + imagePath);
+            }
+        }
+        return theater;
     }
 
     @Override
