@@ -27,8 +27,7 @@ public class GeneralEventServiceImplementation implements GeneralEventService {
             String imagePath = event.getEventImagePath();
             
             if (imagePath != null && !imagePath.isEmpty()) {
-                String fullPath = getAccessibleUrl("http://192.168.50.90:8080" + imagePath,
-                "http://192.168.50.91:8080" + imagePath);
+                String fullPath = getAccessibleUrl("http://localhost:8080" + imagePath);
                 event.setEventImagePath(fullPath);
             }
         }
@@ -46,8 +45,7 @@ public class GeneralEventServiceImplementation implements GeneralEventService {
             String imagePath = event.getEventImagePath();
 
             if (imagePath != null && !imagePath.isEmpty()) {
-                String fullPath = getAccessibleUrl("http://192.168.50.90:8080" + imagePath,
-                                               "http://192.168.50.91:8080" + imagePath);
+                String fullPath = getAccessibleUrl("http://localhost:8080" + imagePath);
                 event.setEventImagePath(fullPath);
             }
         }
