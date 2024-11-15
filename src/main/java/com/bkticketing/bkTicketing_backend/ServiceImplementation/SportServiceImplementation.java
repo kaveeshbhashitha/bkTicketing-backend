@@ -21,7 +21,7 @@ public class SportServiceImplementation implements SportService {
             String imagePath = event.getMatchImagePath();
             
             if (imagePath != null && !imagePath.isEmpty()) {
-                String fullPath = getAccessibleUrl("\"http://localhost:8080" + imagePath);
+                String fullPath = getAccessibleUrl("http://localhost:8080" + imagePath);
                 event.setMatchImagePath(fullPath);
             }
         }
