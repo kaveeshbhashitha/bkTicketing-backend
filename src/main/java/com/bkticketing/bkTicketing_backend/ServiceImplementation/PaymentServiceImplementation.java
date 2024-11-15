@@ -27,6 +27,10 @@ public class PaymentServiceImplementation implements PaymentService {
     @Autowired
     private JavaMailSender mailSender;
 
+    public PaymentServiceImplementation(PaymentRepository paymentRepository) {
+        this.paymentRepository = paymentRepository;
+    }
+
     public Payment processPayment(Payment payment) {
         Payment savedPayment = paymentRepository.save(payment);
 

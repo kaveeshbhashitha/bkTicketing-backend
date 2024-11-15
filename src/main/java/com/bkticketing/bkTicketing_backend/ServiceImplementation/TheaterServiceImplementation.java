@@ -22,7 +22,7 @@ public class TheaterServiceImplementation implements TheaterService {
             if (imagePath != null && !imagePath.isEmpty()) {
                 theater1.setTheaterImagePath("http://localhost:8080" + imagePath);
                 String fullPath = getAccessibleUrl("http://localhost:8080" + imagePath);
-                event.setTheaterImagePath(fullPath);
+                theater1.setTheaterImagePath(fullPath);
             }
         }
         return theater;
