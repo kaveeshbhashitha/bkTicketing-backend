@@ -49,7 +49,7 @@ public class TheaterController {
         return "Theater deleted with id " + theaterId;
     }
 
-@PostMapping("/uploadImage")
+    @PostMapping("/uploadImage")
     public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file) {
         try {
             String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
