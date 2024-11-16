@@ -13,12 +13,12 @@ public class Activity {
     private String activityDate;
     private String startTime;
     private String endTime;
-    private String venue;
+    private String eventVenue;
     private Integer maxPerson;
     private Double chargePerPerson;
     private String duration;
     private String availableFor;
-    private String imagePath;
+    private String eventImagePath;
     private LocalDate dateAdded = LocalDate.now();
     private LocalTime timeAdded = LocalTime.now();
 
@@ -61,15 +61,6 @@ public class Activity {
     public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
-
-    public String getVenue() {
-        return venue;
-    }
-
-    public void setVenue(String venue) {
-        this.venue = venue;
-    }
-
     public Integer getMaxPerson() {
         return maxPerson;
     }
@@ -102,14 +93,6 @@ public class Activity {
         this.availableFor = availableFor;
     }
 
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
     public LocalDate getDateAdded() {
         return dateAdded;
     }
@@ -124,5 +107,21 @@ public class Activity {
 
     public void setTimeAdded(LocalTime timeAdded) {
         this.timeAdded = timeAdded;
+    }
+
+    public String getEventVenue() {
+        return eventVenue;
+    }
+
+    public void setEventVenue(String eventVenue) {
+        this.eventVenue = eventVenue;
+    }
+
+    public String getEventImagePath() {
+        return eventImagePath;
+    }
+
+    public void setEventImagePath(String eventImagePath) {
+        this.eventImagePath = eventImagePath;
     }
 }

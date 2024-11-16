@@ -33,7 +33,7 @@ public class ActivityServiceImplementation implements ActivityService {
             activity.setActivityDate(activityDetails.getActivityDate());
             activity.setStartTime(activityDetails.getStartTime());
             activity.setEndTime(activityDetails.getEndTime());
-            activity.setVenue(activityDetails.getVenue());
+            activity.setEventVenue(activityDetails.getEventVenue());
             activity.setChargePerPerson(activityDetails.getChargePerPerson());
             activity.setMaxPerson(activityDetails.getMaxPerson());
             activity.setDuration(activityDetails.getDuration());
