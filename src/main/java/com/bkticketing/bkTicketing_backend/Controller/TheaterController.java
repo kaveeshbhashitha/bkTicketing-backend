@@ -1,5 +1,6 @@
 package com.bkticketing.bkTicketing_backend.Controller;
 
+<<<<<<< HEAD
 import java.util.List;
 import java.util.Optional;
 
@@ -17,10 +18,33 @@ import com.bkticketing.bkTicketing_backend.Model.Theater;
 import com.bkticketing.bkTicketing_backend.Service.TheaterService;
 
 @RestController
+=======
+import com.bkticketing.bkTicketing_backend.Model.Theater;
+import com.bkticketing.bkTicketing_backend.Service.TheaterService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+@RestController
+@CrossOrigin(origins = {"http://localhost:3000"})
+>>>>>>> origin/main
 @RequestMapping("/theater")
 public class TheaterController {
     @Autowired
     private TheaterService theaterService;
+<<<<<<< HEAD
+=======
+    private static final String IMAGE_DIRECTORY = "src/main/resources/static/images/";
+>>>>>>> origin/main
 
     @GetMapping("/getAllTheater")
     public List<Theater> getAllTheater() {
@@ -47,4 +71,25 @@ public class TheaterController {
         theaterService.deleteTheater(theaterId);
         return "Theater deleted with id " + theaterId;
     }
+<<<<<<< HEAD
+=======
+
+    @PostMapping("/uploadImage")
+    public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file) {
+        try {
+            String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+            Path filePath = Paths.get(IMAGE_DIRECTORY, filename);
+
+            Files.createDirectories(filePath.getParent());
+
+            Files.write(filePath, file.getBytes());
+
+            return ResponseEntity.ok("/images/" + filename);
+
+        } catch (IOException e) {
+            return ResponseEntity.status(500).body("File upload failed: " + e.getMessage());
+        }
+    }
+
+>>>>>>> origin/main
 }

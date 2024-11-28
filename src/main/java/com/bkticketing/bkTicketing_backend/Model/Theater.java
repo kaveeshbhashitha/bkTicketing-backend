@@ -1,11 +1,19 @@
 package com.bkticketing.bkTicketing_backend.Model;
+<<<<<<< HEAD
+=======
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+>>>>>>> origin/main
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+<<<<<<< HEAD
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+=======
+>>>>>>> origin/main
 @Document(collection = "theater")
 public class Theater {
     @Id

@@ -28,10 +28,16 @@ public class GeneralEventController {
     public List<GeneralEvent> getAllEvents() {
         return eventService.getAllEvents();
     }
+    
 
     @GetMapping("/getEventById/{id}")
     public Optional<GeneralEvent> getEventById(@PathVariable("id") String eventId) {
         return eventService.getEventById(eventId);
+    }
+
+    @GetMapping("/getEventByType/{eventType}")
+    public List<GeneralEvent> getEventByType(@PathVariable("eventType") String eventType) {
+        return eventService.getEventByType(eventType);
     }
 
     @PostMapping("/addEvent")

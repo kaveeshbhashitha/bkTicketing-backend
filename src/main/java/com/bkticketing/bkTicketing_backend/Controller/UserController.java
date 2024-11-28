@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
@@ -32,6 +33,12 @@ public class UserController {
         User user = userService.getUserById(userId);
         return ResponseEntity.ok(user);
     }
+    @GetMapping("/getUserNameByID/{id}")
+    public String getUsernameById(@PathVariable("id") String userId) {
+        User user = userService.getUserNameById(userId);
+        String userName=user.getFirstName();
+        return userName;
+    }
 
     @GetMapping("/getUserByEmail/{id}")
     public User getUserByEmail(@PathVariable("id") String userEmail) {
@@ -42,13 +49,6 @@ public class UserController {
     @GetMapping("/allUsers")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
-    }
-
-    // Update user by ID
-    @PutMapping("/update/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") String userId, @RequestBody User userDetails) {
-        User updatedUser = userService.updateUser(userId, userDetails);
-        return ResponseEntity.ok(updatedUser);
     }
 
     // Delete user by ID
@@ -72,5 +72,32 @@ public class UserController {
     public String logout(HttpSession session) {
         session.invalidate();
         return "Logged out successfully";
+    }
+    @PostMapping("/register")
+    public String register(@RequestBody User user) {
+        if (userRepository.findByUserEmail(user.getUserEmail()) != null) {
+            return "User already registered as a user";
+        }
+        userRepository.save(user);
+        return "User registered successfully";
+    }
+
+    @PostMapping("/send-code")
+    public String sendRecoveryCode(@RequestBody Map<String, String> payload) {
+        String userEmail = payload.get("userEmail");
+        if (userEmail == null || userEmail.isBlank()) {
+            throw new RuntimeException("Email cannot be empty.");
+        }
+        return userService.sendRecoveryCode(userEmail);
+    }
+
+    @PostMapping("/verify-code")
+    public boolean verifyRecoveryCode(@RequestParam String userEmail, @RequestParam String recoveryCode) {
+        return userService.verifyRecoveryCode(userEmail, recoveryCode);
+    }
+
+    @PostMapping("/update-password")
+    public User updatePassword(@RequestParam String userEmail, @RequestParam String newPassword) {
+        return userService.updatePassword(userEmail, newPassword);
     }
 }

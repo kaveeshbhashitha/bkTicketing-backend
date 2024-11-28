@@ -15,8 +15,8 @@ public class Payment {
     private String userEmail;
     private LocalDate paymentDate = LocalDate.now();
     private LocalTime paymentTime = LocalTime.now();
-    private String description;
-    private boolean checkAccept;
+    private String description = "Payment Confirmation";
+    private boolean checkAccept = true;
     private String refundStatus = "Not Applicable";
 
     public String getPaymentId() {

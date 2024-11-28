@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface GeneralEventService {
     List<GeneralEvent> getAllEvents();
     Optional<GeneralEvent> getEventById(String eventId);
+    List<GeneralEvent> getEventByType(String eventType);
     GeneralEvent addEvent(GeneralEvent event);
     GeneralEvent updateEvent(String eventId, GeneralEvent eventDetails);
     void deleteEvent(String eventId);
