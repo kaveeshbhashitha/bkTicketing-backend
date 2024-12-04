@@ -1,6 +1,5 @@
 package com.bkticketing.bkTicketing_backend.Controller;
 import com.bkticketing.bkTicketing_backend.Model.GeneralEvent;
-import com.bkticketing.bkTicketing_backend.Service.GeneralEventService;
 import com.bkticketing.bkTicketing_backend.ServiceImplementation.GeneralEventServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,10 +27,16 @@ public class GeneralEventController {
     public List<GeneralEvent> getAllEvents() {
         return eventService.getAllEvents();
     }
+    
 
     @GetMapping("/getEventById/{id}")
     public Optional<GeneralEvent> getEventById(@PathVariable("id") String eventId) {
         return eventService.getEventById(eventId);
+    }
+
+    @GetMapping("/getEventByType/{eventType}")
+    public List<GeneralEvent> getEventByType(@PathVariable("eventType") String eventType) {
+        return eventService.getEventByType(eventType);
     }
 
     @PostMapping("/addEvent")
