@@ -1,4 +1,5 @@
 package com.bkticketing.bkTicketing_backend.Controller;
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 import java.util.List;
@@ -19,6 +20,8 @@ import com.bkticketing.bkTicketing_backend.Service.TheaterService;
 
 @RestController
 =======
+=======
+>>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
 import com.bkticketing.bkTicketing_backend.Model.Theater;
 import com.bkticketing.bkTicketing_backend.Service.TheaterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,15 +39,39 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = {"http://localhost:3000"})
+<<<<<<< HEAD
 >>>>>>> origin/main
+=======
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.bkticketing.bkTicketing_backend.Model.Theater;
+import com.bkticketing.bkTicketing_backend.Service.TheaterService;
+
+@RestController
+>>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
 @RequestMapping("/theater")
 public class TheaterController {
     @Autowired
     private TheaterService theaterService;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     private static final String IMAGE_DIRECTORY = "src/main/resources/static/images/";
 >>>>>>> origin/main
+=======
+    private static final String IMAGE_DIRECTORY = "src/main/resources/static/images/";
+>>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
 
     @GetMapping("/getAllTheater")
     public List<Theater> getAllTheater() {
@@ -72,7 +99,10 @@ public class TheaterController {
         return "Theater deleted with id " + theaterId;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
 
     @PostMapping("/uploadImage")
     public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file) {
@@ -90,6 +120,9 @@ public class TheaterController {
             return ResponseEntity.status(500).body("File upload failed: " + e.getMessage());
         }
     }
+<<<<<<< HEAD
 
 >>>>>>> origin/main
+=======
+>>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
 }

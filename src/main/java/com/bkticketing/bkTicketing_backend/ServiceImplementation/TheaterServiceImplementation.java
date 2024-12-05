@@ -1,5 +1,8 @@
 package com.bkticketing.bkTicketing_backend.ServiceImplementation;
+<<<<<<< HEAD
 
+=======
+>>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
 import com.bkticketing.bkTicketing_backend.Model.Theater;
 import com.bkticketing.bkTicketing_backend.Repository.TheaterRepository;
 import com.bkticketing.bkTicketing_backend.Service.TheaterService;
@@ -9,12 +12,23 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
+<<<<<<< HEAD
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.bkticketing.bkTicketing_backend.Model.Theater;
+import com.bkticketing.bkTicketing_backend.Repository.TheaterRepository;
+import com.bkticketing.bkTicketing_backend.Service.TheaterService;
+>>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
 
 @Service
 public class TheaterServiceImplementation implements TheaterService {
     @Autowired
     private TheaterRepository theaterRepository;
+<<<<<<< HEAD
 
+=======
+>>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
     @Override
     public List<Theater> getAllTheater() {
         List<Theater> theater = theaterRepository.findAll();
@@ -52,6 +66,13 @@ public class TheaterServiceImplementation implements TheaterService {
     }
 
     @Override
+<<<<<<< HEAD
+=======
+    public List<Theater> getAllTheater() {
+        return theaterRepository.findAll();
+    }
+
+>>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
     public Optional<Theater> getTheaterById(String theaterId) {
         return theaterRepository.findById(theaterId);
     }
@@ -72,6 +93,10 @@ public class TheaterServiceImplementation implements TheaterService {
             theater.setTheaterOrganizer(theaterDetails.getTheaterOrganizer());
             theater.setDescription(theaterDetails.getDescription());
             theater.setOneTicketPrice(theaterDetails.getOneTicketPrice());
+<<<<<<< HEAD
+=======
+            theater.setTheaterImagePath(theaterDetails.getTheaterImagePath());
+>>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
             theater.setTheaterIsFor(theaterDetails.getTheaterIsFor());
             theater.setNumOfTickets(theaterDetails.getNumOfTickets());
             return theaterRepository.save(theater);
@@ -82,4 +107,11 @@ public class TheaterServiceImplementation implements TheaterService {
     public void deleteTheater(String theaterId) {
         theaterRepository.deleteById(theaterId);
     }
+<<<<<<< HEAD
+=======
+    public void deleteTheater(String theaterId) {
+        theaterRepository.deleteById(theaterId);
+    }
+
+>>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
 }
