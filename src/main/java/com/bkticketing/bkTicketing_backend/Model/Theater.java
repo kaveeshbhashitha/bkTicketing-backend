@@ -1,29 +1,10 @@
 package com.bkticketing.bkTicketing_backend.Model;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
->>>>>>> origin/main
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
-<<<<<<< HEAD
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-=======
->>>>>>> origin/main
-=======
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
->>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
 @Document(collection = "theater")
 public class Theater {
     @Id

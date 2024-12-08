@@ -1,32 +1,14 @@
 package com.bkticketing.bkTicketing_backend.ServiceImplementation;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
+
 import com.bkticketing.bkTicketing_backend.Model.Email;
 import com.bkticketing.bkTicketing_backend.Repository.EmailRepository;
 import com.bkticketing.bkTicketing_backend.Service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-<<<<<<< HEAD
->>>>>>> origin/main
-
 import java.util.List;
 import java.util.Optional;
-
-<<<<<<< HEAD
-=======
-import java.util.List;
-import java.util.Optional;
->>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Service;
-import com.bkticketing.bkTicketing_backend.Model.Email;
-import com.bkticketing.bkTicketing_backend.Repository.EmailRepository;
-import com.bkticketing.bkTicketing_backend.Service.EmailService;
 
 @Service
 public class EmailServiceImplementation implements EmailService {
@@ -67,42 +49,15 @@ public class EmailServiceImplementation implements EmailService {
         }
     }
 
-<<<<<<< HEAD
-=======
-@Service
-public class EmailServiceImplementation implements EmailService {
-    @Autowired
-    private EmailRepository emailRepository;
-    @Override
-    public Email addEmail(Email email) {
-        return emailRepository.save(email);
-    }
-
-    @Override
->>>>>>> origin/main
     public List<Email> getAllEmail() {
         return emailRepository.findAll();
     }
 
-<<<<<<< HEAD
-=======
     @Override
->>>>>>> origin/main
-=======
-    public List<Email> getAllEmail() {
-        return emailRepository.findAll();
-    }
-    @Override
->>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
     public Optional<Email> getEmailById(String emailId) {
         return emailRepository.findById(emailId);
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
     @Override
     public Email updateEmail(String emailId, Email emailDetails) {
         return emailRepository.findById(emailId).map(email -> {
@@ -117,11 +72,13 @@ public class EmailServiceImplementation implements EmailService {
     }
 
     @Override
-<<<<<<< HEAD
->>>>>>> origin/main
-=======
->>>>>>> ecec8a2e23ab93e50b1e64e040841cce261c7984
     public void deleteEmail(String emailId) {
         emailRepository.deleteById(emailId);
+    }
+
+    @Override
+    public Email addEmail(Email email) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addEmail'");
     }
 }
