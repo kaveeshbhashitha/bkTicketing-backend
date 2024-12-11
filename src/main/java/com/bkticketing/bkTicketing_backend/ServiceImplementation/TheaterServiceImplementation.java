@@ -1,4 +1,5 @@
 package com.bkticketing.bkTicketing_backend.ServiceImplementation;
+
 import com.bkticketing.bkTicketing_backend.Model.Theater;
 import com.bkticketing.bkTicketing_backend.Repository.TheaterRepository;
 import com.bkticketing.bkTicketing_backend.Service.TheaterService;
@@ -8,16 +9,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import com.bkticketing.bkTicketing_backend.Model.Theater;
-import com.bkticketing.bkTicketing_backend.Repository.TheaterRepository;
-import com.bkticketing.bkTicketing_backend.Service.TheaterService;
 
 @Service
 public class TheaterServiceImplementation implements TheaterService {
     @Autowired
     private TheaterRepository theaterRepository;
+
     @Override
     public List<Theater> getAllTheater() {
         List<Theater> theater = theaterRepository.findAll();
@@ -33,13 +30,13 @@ public class TheaterServiceImplementation implements TheaterService {
         return theater;
     }
 
-     private String getAccessibleUrl(String... urls) {
+    private String getAccessibleUrl(String... urls) {
         for (String url : urls) {
             if (isUrlAccessible(url)) {
                 return url;
             }
         }
-        return null; 
+        return null;
     }
 
     private boolean isUrlAccessible(String urlString) {
@@ -52,11 +49,6 @@ public class TheaterServiceImplementation implements TheaterService {
         } catch (Exception e) {
             return false;
         }
-    }
-
-    @Override
-    public List<Theater> getAllTheater() {
-        return theaterRepository.findAll();
     }
 
     public Optional<Theater> getTheaterById(String theaterId) {
@@ -90,8 +82,4 @@ public class TheaterServiceImplementation implements TheaterService {
     public void deleteTheater(String theaterId) {
         theaterRepository.deleteById(theaterId);
     }
-    public void deleteTheater(String theaterId) {
-        theaterRepository.deleteById(theaterId);
-    }
-
 }

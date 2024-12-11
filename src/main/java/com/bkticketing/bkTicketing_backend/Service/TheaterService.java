@@ -1,11 +1,8 @@
 package com.bkticketing.bkTicketing_backend.Service;
-import com.bkticketing.bkTicketing_backend.Model.Theater;
-import java.util.List;
-import java.util.Optional;
-import java.util.List;
-import java.util.Optional;
 
 import com.bkticketing.bkTicketing_backend.Model.Theater;
+import java.util.List;
+import java.util.Optional;
 
 public interface TheaterService {
     List<Theater> getAllTheater();
