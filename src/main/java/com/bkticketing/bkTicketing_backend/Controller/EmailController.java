@@ -38,6 +38,5 @@ public class EmailController {
     public String deleteEmail(@PathVariable("id") String emailId) {
         emailServiceImplementation.deleteEmail(emailId);
         return "Notification deleted with id " + emailId;
-
     }
 }
