@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000"})
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/generalEvent")
 public class GeneralEventController {
     @Autowired
@@ -38,8 +38,6 @@ public class GeneralEventController {
     public List<GeneralEvent> getEventByType(@PathVariable("eventType") String eventType) {
         return eventService.getEventByType(eventType);
     }
-
-
 
     @PostMapping("/addEvent")
     public GeneralEvent addEvent(@RequestBody GeneralEvent event) {

@@ -1,12 +1,12 @@
 package com.bkticketing.bkTicketing_backend.Controller;
-import com.bkticketing.bkTicketing_backend.Model.Payment;
-import com.bkticketing.bkTicketing_backend.Service.PaymentService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.*;
 
+import com.bkticketing.bkTicketing_backend.Model.DailyIncomeDto;
+import com.bkticketing.bkTicketing_backend.Model.Payment;
+import com.bkticketing.bkTicketing_backend.Repository.PaymentRepository;
+import com.bkticketing.bkTicketing_backend.ServiceImplementation.PaymentServiceImplementation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +17,19 @@ import java.util.Optional;
 public class PaymentController {
 
     @Autowired
-    private PaymentService paymentService;
+    private PaymentServiceImplementation paymentService;
+
+    @Autowired
+    private PaymentRepository paymentRepository;
+
+    public PaymentController(PaymentServiceImplementation paymentService) {
+        this.paymentService = paymentService;
+    }
+    @GetMapping("/dailyIncome")
+    public ResponseEntity<List<DailyIncomeDto>> getDailyIncome() {
+        List<DailyIncomeDto> dailyIncome = paymentRepository.aggregateDailyIncome(); // Implement aggregation in your repository
+        return ResponseEntity.ok(dailyIncome);
+    }
 
     @PostMapping("/process") // add method
     public Payment processPayment(@RequestBody Payment payment) {

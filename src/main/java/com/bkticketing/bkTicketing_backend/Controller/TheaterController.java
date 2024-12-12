@@ -1,5 +1,4 @@
 package com.bkticketing.bkTicketing_backend.Controller;
-
 import com.bkticketing.bkTicketing_backend.Model.Theater;
 import com.bkticketing.bkTicketing_backend.Service.TheaterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +13,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000"})
 @RequestMapping("/theater")
 public class TheaterController {
     @Autowired
@@ -49,7 +46,7 @@ public class TheaterController {
         return "Theater deleted with id " + theaterId;
     }
 
-@PostMapping("/uploadImage")
+    @PostMapping("/uploadImage")
     public ResponseEntity<String> uploadImage(@RequestParam("file") MultipartFile file) {
         try {
             String filename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
@@ -65,5 +62,4 @@ public class TheaterController {
             return ResponseEntity.status(500).body("File upload failed: " + e.getMessage());
         }
     }
-
 }

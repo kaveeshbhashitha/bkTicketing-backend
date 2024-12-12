@@ -1,5 +1,4 @@
 package com.bkticketing.bkTicketing_backend.Controller;
-
 import com.bkticketing.bkTicketing_backend.Model.Email;
 import com.bkticketing.bkTicketing_backend.ServiceImplementation.EmailServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
