@@ -14,5 +14,9 @@ public interface EmailService {
 
     Optional<Email> getEmailById(String emailId);
 
+    Email updateEmail(String emailId, Email emailDetails);
+
     void deleteEmail(String emailId);
+
+    Email addEmail(Email email);
 }
