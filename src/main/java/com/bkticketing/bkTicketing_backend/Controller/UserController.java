@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
@@ -50,13 +51,6 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    // Update user by ID
-    @PutMapping("/update/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") String userId, @RequestBody User userDetails) {
-        User updatedUser = userService.updateUser(userId, userDetails);
-        return ResponseEntity.ok(updatedUser);
-    }
-
     // Delete user by ID
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable("id") String userId) {
@@ -86,5 +80,24 @@ public class UserController {
         }
         userRepository.save(user);
         return "User registered successfully";
+    }
+
+    @PostMapping("/send-code")
+    public String sendRecoveryCode(@RequestBody Map<String, String> payload) {
+        String userEmail = payload.get("userEmail");
+        if (userEmail == null || userEmail.isBlank()) {
+            throw new RuntimeException("Email cannot be empty.");
+        }
+        return userService.sendRecoveryCode(userEmail);
+    }
+
+    @PostMapping("/verify-code")
+    public boolean verifyRecoveryCode(@RequestParam String userEmail, @RequestParam String recoveryCode) {
+        return userService.verifyRecoveryCode(userEmail, recoveryCode);
+    }
+
+    @PostMapping("/update-password")
+    public User updatePassword(@RequestParam String userEmail, @RequestParam String newPassword) {
+        return userService.updatePassword(userEmail, newPassword);
     }
 }

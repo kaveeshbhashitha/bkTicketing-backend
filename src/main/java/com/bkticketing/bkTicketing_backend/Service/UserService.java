@@ -8,7 +8,9 @@ public interface UserService {
     User getUserNameById(String userId);
     User getUserByUserEmail(String userEmail);
     List<User> getAllUsers();
-    User updateUser(String userId, User userDetails);
     void deleteUser(String userId);
+    String sendRecoveryCode(String userEmail);
+    boolean verifyRecoveryCode(String userEmail, String recoveryCode);
+    User updatePassword(String userEmail, String newPassword);
     
 }
