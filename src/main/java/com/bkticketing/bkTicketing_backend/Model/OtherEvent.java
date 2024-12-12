@@ -1,25 +1,25 @@
 package com.bkticketing.bkTicketing_backend.Model;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "theater")
-public class Theater {
+@Document(collation = "other")
+public class OtherEvent {
     @Id
     private String eventId;
     private String eventName;
-    private String theaterDate;
-    private String theaterTime1;
-    private String theaterTime2;
-    private String theaterVenue;
-    private String theaterOrganizer;
+    private String eventDate;
+    private String eventTime;
+    private String eventVenue;
+    private String eventOrganizer;
     private String description;
     private Double oneTicketPrice;
-    private String theaterIsFor;
-    private String theaterImagePath;
+    private String eventType;
+    private String eventIsFor;
+    private String otherEventImagePath;
     private Integer numOfTickets;
     private LocalDate dateAdded = LocalDate.now();
     private LocalTime timeAdded = LocalTime.now();
@@ -40,44 +40,36 @@ public class Theater {
         this.eventName = eventName;
     }
 
-    public String getTheaterDate() {
-        return theaterDate;
+    public String getEventDate() {
+        return eventDate;
     }
 
-    public void setTheaterDate(String theaterDate) {
-        this.theaterDate = theaterDate;
+    public void setEventDate(String eventDate) {
+        this.eventDate = eventDate;
     }
 
-    public String getTheaterTime1() {
-        return theaterTime1;
+    public String getEventTime() {
+        return eventTime;
     }
 
-    public void setTheaterTime1(String theaterTime1) {
-        this.theaterTime1 = theaterTime1;
+    public void setEventTime(String eventTime) {
+        this.eventTime = eventTime;
     }
 
-    public String getTheaterTime2() {
-        return theaterTime2;
+    public String getEventVenue() {
+        return eventVenue;
     }
 
-    public void setTheaterTime2(String theaterTime2) {
-        this.theaterTime2 = theaterTime2;
+    public void setEventVenue(String eventVenue) {
+        this.eventVenue = eventVenue;
     }
 
-    public String getTheaterVenue() {
-        return theaterVenue;
+    public String getEventOrganizer() {
+        return eventOrganizer;
     }
 
-    public void setTheaterVenue(String theaterVenue) {
-        this.theaterVenue = theaterVenue;
-    }
-
-    public String getTheaterOrganizer() {
-        return theaterOrganizer;
-    }
-
-    public void setTheaterOrganizer(String theaterOrganizer) {
-        this.theaterOrganizer = theaterOrganizer;
+    public void setEventOrganizer(String eventOrganizer) {
+        this.eventOrganizer = eventOrganizer;
     }
 
     public String getDescription() {
@@ -96,20 +88,20 @@ public class Theater {
         this.oneTicketPrice = oneTicketPrice;
     }
 
-    public String getTheaterIsFor() {
-        return theaterIsFor;
+    public String getEventType() {
+        return eventType;
     }
 
-    public void setTheaterIsFor(String theaterIsFor) {
-        this.theaterIsFor = theaterIsFor;
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
     }
 
-    public String getTheaterImagePath() {
-        return theaterImagePath;
+    public String getEventIsFor() {
+        return eventIsFor;
     }
 
-    public void setTheaterImagePath(String theaterImagePath) {
-        this.theaterImagePath = theaterImagePath;
+    public void setEventIsFor(String eventIsFor) {
+        this.eventIsFor = eventIsFor;
     }
 
     public Integer getNumOfTickets() {
@@ -134,5 +126,13 @@ public class Theater {
 
     public void setTimeAdded(LocalTime timeAdded) {
         this.timeAdded = timeAdded;
+    }
+
+    public String getOtherEventImagePath() {
+        return otherEventImagePath;
+    }
+
+    public void setOtherEventImagePath(String otherEventImagePath) {
+        this.otherEventImagePath = otherEventImagePath;
     }
 }

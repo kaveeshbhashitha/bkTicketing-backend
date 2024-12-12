@@ -8,6 +8,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.bkticketing.bkTicketing_backend.Model.Theater;
+import com.bkticketing.bkTicketing_backend.Repository.TheaterRepository;
+import com.bkticketing.bkTicketing_backend.Service.TheaterService;
 
 @Service
 public class TheaterServiceImplementation implements TheaterService {
@@ -70,6 +75,7 @@ public class TheaterServiceImplementation implements TheaterService {
             theater.setTheaterOrganizer(theaterDetails.getTheaterOrganizer());
             theater.setDescription(theaterDetails.getDescription());
             theater.setOneTicketPrice(theaterDetails.getOneTicketPrice());
+            theater.setTheaterImagePath(theaterDetails.getTheaterImagePath());
             theater.setTheaterIsFor(theaterDetails.getTheaterIsFor());
             theater.setNumOfTickets(theaterDetails.getNumOfTickets());
             return theaterRepository.save(theater);
@@ -80,4 +86,5 @@ public class TheaterServiceImplementation implements TheaterService {
     public void deleteTheater(String theaterId) {
         theaterRepository.deleteById(theaterId);
     }
+
 }
