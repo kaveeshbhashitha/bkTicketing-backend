@@ -55,10 +55,6 @@ public class TheaterServiceImplementation implements TheaterService {
     }
 
     @Override
-    public List<Theater> getAllTheater() {
-        return theaterRepository.findAll();
-    }
-
     public Optional<Theater> getTheaterById(String theaterId) {
         return theaterRepository.findById(theaterId);
     }
@@ -87,9 +83,6 @@ public class TheaterServiceImplementation implements TheaterService {
     }
 
     @Override
-    public void deleteTheater(String theaterId) {
-        theaterRepository.deleteById(theaterId);
-    }
     public void deleteTheater(String theaterId) {
         theaterRepository.deleteById(theaterId);
     }

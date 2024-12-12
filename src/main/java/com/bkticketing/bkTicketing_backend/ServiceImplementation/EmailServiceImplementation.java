@@ -6,13 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Service;
-import com.bkticketing.bkTicketing_backend.Model.Email;
-import com.bkticketing.bkTicketing_backend.Repository.EmailRepository;
-import com.bkticketing.bkTicketing_backend.Service.EmailService;
 
 @Service
 public class EmailServiceImplementation implements EmailService {
@@ -77,5 +73,10 @@ public class EmailServiceImplementation implements EmailService {
     @Override
     public void deleteEmail(String emailId) {
         emailRepository.deleteById(emailId);
+    }
+
+    @Override
+    public Email addEmail(Email email) {
+        return emailRepository.save(email);
     }
 }
