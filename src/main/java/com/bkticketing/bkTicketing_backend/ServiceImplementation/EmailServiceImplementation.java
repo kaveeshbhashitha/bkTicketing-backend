@@ -77,6 +77,6 @@ public class EmailServiceImplementation implements EmailService {
 
     @Override
     public Email addEmail(Email email) {
-        return emailRepository.save(email);
+       return emailRepository.save(email);
     }
 }

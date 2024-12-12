@@ -53,7 +53,6 @@ public class TheaterServiceImplementation implements TheaterService {
             return false;
         }
     }
-
     @Override
     public Optional<Theater> getTheaterById(String theaterId) {
         return theaterRepository.findById(theaterId);
