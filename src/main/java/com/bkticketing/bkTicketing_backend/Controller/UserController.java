@@ -5,6 +5,7 @@ import com.bkticketing.bkTicketing_backend.Service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,9 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     // Create a new user
     @PostMapping("/addUser")
@@ -59,25 +63,33 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody User user, HttpSession session) {
-        User existingUser = userRepository.findByUserEmail(user.getUserEmail());
-        if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
-            session.setAttribute("user", user);
-            return "Login successful";
-        } else {
+    public String login(@RequestBody User loginRequest, HttpSession session) {
+        User user = userRepository.findByUserEmail(loginRequest.getUserEmail());
+        if (user == null) {
+            return "User not found";
+        }
+        // Verify the password
+        if (!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
             return "Invalid username or password";
         }
+        // Add user details to the session
+        session.setAttribute("user", user);
+        return "Login successful";
     }
+
     @PostMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
         return "Logged out successfully";
     }
+
     @PostMapping("/register")
     public String register(@RequestBody User user) {
         if (userRepository.findByUserEmail(user.getUserEmail()) != null) {
             return "User already registered as a user";
         }
+        // Hash the password
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return "User registered successfully";
     }
