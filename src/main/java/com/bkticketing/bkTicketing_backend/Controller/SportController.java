@@ -21,10 +21,7 @@ import java.util.UUID;
 public class SportController {
     @Autowired
     private SportServiceImplementation sportServiceImplementation;
-
     private static final String IMAGE_DIRECTORY = "src/main/resources/static/images/";
-
-
     @GetMapping("/getAllSport")
     public List<Sport> getAllSport() {
         return sportServiceImplementation.getAllSport();
