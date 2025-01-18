@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins={"http://localhost:3000","https://bkticketingfrontend.netlify.app"})
+@CrossOrigin(origins={"http://localhost:3000","https://bkticketingfrontend.netlify.app"})//add jar file
 @RequestMapping("/user")
 public class UserController {
     @Autowired
