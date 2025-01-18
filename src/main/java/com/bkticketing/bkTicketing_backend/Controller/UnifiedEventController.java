@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins={"http://localhost:3000","https://bkticketingfrontend.netlify.app"})
 @RequestMapping("/unifiedEvent")
 public class UnifiedEventController {
     @Autowired

@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000"})
+@CrossOrigin(origins={"http://localhost:3000","https://bkticketingfrontend.netlify.app"})
 @RequestMapping("/sport")
 public class SportController {
     @Autowired

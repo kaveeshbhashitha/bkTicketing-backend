@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins={"http://localhost:3000","https://bkticketingfrontend.netlify.app"})
 @RequestMapping("/payment")
 public class PaymentController {
 

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000"})
+@CrossOrigin(origins={"http://localhost:3000","https://bkticketingfrontend.netlify.app"})
 @RequestMapping("/theater")
 public class TheaterController {
     @Autowired
